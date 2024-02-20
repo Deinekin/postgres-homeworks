@@ -19,6 +19,9 @@ def write_csv_to_sql_table(filename: str, table_name: str) -> None:
         cur.executemany(f"INSERT INTO {table_name} VALUES ({number_of_columns[:-2]})", reader)
         conn.commit()
 
+        cur.close()
+        conn.close()
+
 
 def main() -> None:
     """Главная функция, получаем пути до каждого .csv файла и выгружаем из них данные в таблицу"""
